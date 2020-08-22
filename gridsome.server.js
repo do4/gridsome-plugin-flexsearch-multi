@@ -150,13 +150,13 @@ function FlexSearchIndex (api, options) {
     let { newDocs } = cleaned;
 
 
-    // Add to search index
-    search.add(newDocs) // array of { id, index, title, path, title, content, node: { category, excerpt } }
-    console.log(`Added ${newDocs.length} nodes to Search Index`)
-
     const DIR = 'flexsearch-docs';
     const FIL = 'docs.json'
     const PAR = 'partners'
+    console.log(`Added ${newDocs.length} site nodes`)
+
+    console.log(`Added ${parDocs.length} partner nodes`)
+
     if (fs.existsSync(DIR)) {
       for (let i in newDocs) {
         let pth = newDocs[i].path;
@@ -168,11 +168,16 @@ function FlexSearchIndex (api, options) {
 
       if (fs.existsSync(PAR_FIL)) {
         const parStr = fs.readFileSync(PAR_FIL, 'utf8')
-        const parDocs = JSON.parse(parStr)
-        search.add(parDocs)
-        console.log(`Added ${parDocs.length} partner nodes to Search Index`)
+        const partnerDocs = JSON.parse(parStr)
+        for (let i in partnerDocs) {
+          newDocs.push(partnerDocs[i])
+        }
       }
     }
+
+    // Add to search index
+    search.add(newDocs) // array of { id, index, title, path, title, content, node: { category, excerpt } }
+    console.log(`Added ${newDocs.length} nodes to Search Index`)
   })
 
   // Setup an endpoint for the dev server
