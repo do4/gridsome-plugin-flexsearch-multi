@@ -156,7 +156,7 @@ function FlexSearchIndex (api, options) {
 
     const DIR = 'flexsearch-docs';
     const FIL = 'docs.json'
-    const PAR = 'partner'
+    const PAR = 'partners'
     if (fs.existsSync(DIR)) {
       for (let i in newDocs) {
         let pth = newDocs[i].path;
@@ -164,7 +164,7 @@ function FlexSearchIndex (api, options) {
         newDocs[i].node.content = undefined
       }
       fs.writeFileSync(`${DIR}/${FIL}`, JSON.stringify(newDocs), 'utf8')
-      const PAR_FIL = `${DIR}/${PAR}-${FIL}`
+      const PAR_FIL = `${DIR}/${PAR}/${FIL}`
 
       if (fs.existsSync(PAR_FIL)) {
         const parStr = fs.readFileSync(PAR_FIL, 'utf8')
