@@ -156,11 +156,9 @@ function FlexSearchIndex (api, options) {
     console.log(`Added ${newDocs.length} site nodes`)
 
     if (fs.existsSync(DIR)) {
-      let partner  = 1
-      let partnerId = partner.toString(36)
       let saveDocs = []
       for (let i in newDocs) {
-        let doc = newDocs[i]
+        let doc = JSON.parse(JSON.stringify(newDocs[i]))
         let pth = doc.path;
         if (docsDomain) doc.path = `//${docsDomain}${pth}`
         doc.node.content = undefined
@@ -171,20 +169,17 @@ function FlexSearchIndex (api, options) {
       const PAR_FIL = `${DIR}/${PAR}/${FIL}`
 
       if (fs.existsSync(PAR_FIL)) {
-        const parStr = fs.readFileSync(PAR_FIL, 'utf8')
+        let partner   = 1
+        const parStr  = fs.readFileSync(PAR_FIL, 'utf8')
         const partnerDocs = JSON.parse(parStr)
+        let partnerId = partner.toString(36)
         for (let i in partnerDocs) {
           let doc = partnerDocs[i];
-          doc.id = `${partnerId}-${doc.id}`
+          doc.id  = `${partnerId}-${doc.id}`
           newDocs.push(doc)
         }
         console.log(`Added ${partnerDocs.length} partner nodes`)
       }
-    }
-    for (let i in newDocs) {
-      let pth = newDocs[i].path;
-      if (docsDomain) newDocs[i].path = `//${docsDomain}${pth}`
-//      newDocs[i].node.content = newDocs[i].content
     }
 
     // Add to search index
