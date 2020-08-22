@@ -155,8 +155,6 @@ function FlexSearchIndex (api, options) {
     const PAR = 'partners'
     console.log(`Added ${newDocs.length} site nodes`)
 
-    console.log(`Added ${parDocs.length} partner nodes`)
-
     if (fs.existsSync(DIR)) {
       for (let i in newDocs) {
         let pth = newDocs[i].path;
@@ -172,6 +170,7 @@ function FlexSearchIndex (api, options) {
         for (let i in partnerDocs) {
           newDocs.push(partnerDocs[i])
         }
+        console.log(`Added ${partnerDocs.length} partner nodes`)
       }
     }
 
