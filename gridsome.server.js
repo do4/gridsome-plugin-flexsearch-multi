@@ -174,15 +174,16 @@ function FlexSearchIndex (api, options) {
           if (file.substr(-5) == '.json') {
             partner++
             let partnerId = partner.toString(36)
+            let name      = file.replace('.json', '')
             let PAR_FIL   = `${PAR_DIR}/${file}`
             let parStr    = fs.readFileSync(PAR_FIL, 'utf8')
             let partnerDocs = JSON.parse(parStr)
             for (let i in partnerDocs) {
               let doc = partnerDocs[i];
               doc.id  = `${partnerId}-${doc.id}`
+              doc.category = undefined,
               newDocs.push(doc)
             }
-            let name = file.replace('.json', '')
             console.log(`Added ${name} ${partnerDocs.length} partner nodes`)
           }
         }) // end filenames.forEach
