@@ -152,6 +152,7 @@ function FlexSearchIndex (api, options) {
 
     const DIR = 'flexsearch-docs';
     const PAR = 'partners'
+    const FIL = 'docs.json'
     console.log(`Added ${newDocs.length} site nodes`)
 
     if (fs.existsSync(DIR)) {
