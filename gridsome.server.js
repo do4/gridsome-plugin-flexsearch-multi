@@ -182,7 +182,7 @@ function FlexSearchIndex (api, options) {
               doc.id  = `${partnerId}-${doc.id}`
               newDocs.push(doc)
             }
-            let name = file.substr(0,-5)
+            let name = file.replace('.json', '')
             console.log(`Added ${name} ${partnerDocs.length} partner nodes`)
           }
         }) // end filenames.forEach
@@ -191,7 +191,7 @@ function FlexSearchIndex (api, options) {
 
     // Add to search index
     search.add(newDocs) // array of { id, index, title, path, title, content, node: { category, excerpt } }
-    console.log(`Added ${newDocs.length} nodes to Search Index`)
+    console.log(`Total ${newDocs.length} nodes to Search Index`)
   })
 
   // Setup an endpoint for the dev server
