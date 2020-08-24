@@ -181,7 +181,7 @@ function FlexSearchIndex (api, options) {
             for (let i in partnerDocs) {
               let doc = partnerDocs[i];
               doc.id  = `${partnerId}-${doc.id}`
-              doc.category = undefined,
+              doc.node.category = undefined,
               newDocs.push(doc)
             }
             console.log(`Added ${name} ${partnerDocs.length} partner nodes`)
