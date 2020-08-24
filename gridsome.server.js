@@ -151,7 +151,6 @@ function FlexSearchIndex (api, options) {
 
 
     const DIR = 'flexsearch-docs';
-    const FIL = 'docs.json'
     const PAR = 'partners'
     console.log(`Added ${newDocs.length} site nodes`)
 
@@ -166,21 +165,28 @@ function FlexSearchIndex (api, options) {
         newDocs[i].node.content = undefined
       }
       fs.writeFileSync(`${DIR}/${FIL}`, JSON.stringify(saveDocs), 'utf8')
-      const PAR_FIL = `${DIR}/${PAR}/${FIL}`
-
-      if (fs.existsSync(PAR_FIL)) {
-        let partner   = 1
-        const parStr  = fs.readFileSync(PAR_FIL, 'utf8')
-        const partnerDocs = JSON.parse(parStr)
-        let partnerId = partner.toString(36)
-        for (let i in partnerDocs) {
-          let doc = partnerDocs[i];
-          doc.id  = `${partnerId}-${doc.id}`
-          newDocs.push(doc)
-        }
-        console.log(`Added ${partnerDocs.length} partner nodes`)
-      }
-    }
+      const PAR_DIR = `${DIR}/${PAR}`
+      if (fs.existsSync(PAR_DIR)) {
+        const filenames = fs.readdirSync(PAR_DIR); 
+        let partner = 0
+        filenames.forEach(file => {
+          if (file.substr(-5) == '.json') {
+            partner++
+            let partnerId = partner.toString(36)
+            let PAR_FIL   = `${PAR_DIR}/${file}`
+            let parStr    = fs.readFileSync(PAR_FIL, 'utf8')
+            let partnerDocs = JSON.parse(parStr)
+            for (let i in partnerDocs) {
+              let doc = partnerDocs[i];
+              doc.id  = `${partnerId}-${doc.id}`
+              newDocs.push(doc)
+            }
+            let name = file.substr(0,-5)
+            console.log(`Added ${name} ${partnerDocs.length} partner nodes`)
+          }
+        }) // end filenames.forEach
+      } // endif fs.existSync(PAR_DIR)
+    } // api.onBootstrap()
 
     // Add to search index
     search.add(newDocs) // array of { id, index, title, path, title, content, node: { category, excerpt } }
