@@ -149,10 +149,9 @@ function FlexSearchIndex (api, options) {
     let cleaned     = cleanAndCompressDocs(docs, compressId)
     let { newDocs } = cleaned;
 
-
     const DIR = 'flexsearch-docs';
     const PAR = 'partners'
-    const FIL = 'docs.json'
+    const FIL = 'search-doc.json'
     console.log(`Added ${newDocs.length} site nodes`)
 
     if (fs.existsSync(DIR)) {
@@ -161,7 +160,8 @@ function FlexSearchIndex (api, options) {
         let doc = JSON.parse(JSON.stringify(newDocs[i]))
         let pth = doc.path;
         if (docsDomain) doc.path = `//${docsDomain}${pth}`
-        doc.node.content = undefined
+        doc.node.category = undefined
+        doc.node.content  = undefined
         saveDocs.push(doc)
         newDocs[i].node.content = undefined
       }

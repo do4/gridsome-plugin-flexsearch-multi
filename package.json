@@ -1,40 +1,14 @@
 {
-  "_args": [
-    [
-      "gridsome-plugin-flexsearch@1.0.1",
-      "/Users/bj/new-netlify/resilenttruth.com"
-    ]
-  ],
-  "_from": "gridsome-plugin-flexsearch@1.0.1",
-  "_id": "gridsome-plugin-flexsearch@1.0.1",
-  "_inBundle": false,
-  "_integrity": "sha512-tTbxoC1ImlTKKTRTMV0vRlOpS5ljRFjQO0M0Wi/I3NoQU8V5mdHs5XOwqimZIFKqwhTIRLx22gfPsRLNhfKWXw==",
-  "_location": "/gridsome-plugin-flexsearch",
-  "_phantomChildren": {
-    "aggregate-error": "3.0.1"
+  "name": "gridsome-plugin-flexsearch",
+  "version": "1.0.1",
+  "description": "Gridsome FlexSearch fork with multi-site support",
+  "main": "gridsome.server.js",
+  "peerDependencies": {
+    "gridsome": ">=0.7.20"
   },
-  "_requested": {
-    "type": "version",
-    "registry": true,
-    "raw": "gridsome-plugin-flexsearch@1.0.1",
-    "name": "gridsome-plugin-flexsearch",
-    "escapedName": "gridsome-plugin-flexsearch",
-    "rawSpec": "1.0.1",
-    "saveSpec": null,
-    "fetchSpec": "1.0.1"
-  },
-  "_requiredBy": [
-    "/"
-  ],
-  "_resolved": "https://registry.npmjs.org/gridsome-plugin-flexsearch/-/gridsome-plugin-flexsearch-1.0.1.tgz",
-  "_spec": "1.0.1",
-  "_where": "/Users/bj/new-netlify/resilenttruth.com",
-  "author": {
-    "name": "Travis Reynolds",
-    "email": "travis@travisreynolds.dev"
-  },
-  "bugs": {
-    "url": "https://github.com/thetre97/gridsome-plugin-flexsearch/issues"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/do4/gridsome-plugin-flexsearch-multi.git"
   },
   "dependencies": {
     "compressed-json": "^1.0.15",
@@ -46,26 +20,15 @@
     "regenerator-runtime": "^0.13.5",
     "uuid": "^8.1.0"
   },
-  "description": "Add lightning fast search to Gridsome with FlexSearch",
   "devDependencies": {
     "eslint-config-travisreynolds-node": "1.1.8"
   },
-  "homepage": "https://github.com/thetre97/gridsome-plugin-flexsearch#readme",
-  "keywords": [
-    "gridsome",
-    "gridsome-plugin",
-    "flexsearch",
-    "search"
-  ],
-  "license": "MIT",
-  "main": "gridsome.server.js",
-  "name": "gridsome-plugin-flexsearch",
-  "peerDependencies": {
-    "gridsome": ">=0.7.15"
+  "forkOf":{
+    "repo":"https://github.com/thetre97/gridsome-plugin-flexsearch",
+    "author": {
+      "name": "Travis Reynolds",
+      "email": "travis@travisreynolds.dev"
+    }  
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/thetre97/gridsome-plugin-flexsearch.git"
-  },
-  "version": "1.0.1"
+  "license": "MIT"
 }
