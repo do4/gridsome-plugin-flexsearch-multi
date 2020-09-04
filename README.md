@@ -6,11 +6,9 @@ Adds: `docsDomain` this sites domain name to be prepended to the path: as //${do
 
 Requires the `flexsearch-docs` folder to be manually added to your project folder
 
-Will store generated `flexsearch-docs/docs.json` for the site
+Will store generated `flexsearch-docs/search-doc.json` for the site
 
-Will merge `flexsearch-docs/partner/docs.json` with the search.
-
-TODO: merge multiple `flexsearch-docs/partner/${DOMAIN}.json` files.
+Will merge `flexsearch-docs/partners/DomainName.com.json` files with the search.
 
 ## gridsome-plugin-flexsearch
 
